@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reporte de precios — BenQ GW2791 — US — 2026-09-23</title>
+<style>
+  :root {
+    --bg: #f6f8fb; --card: #ffffff; --ink: #1a1f36; --muted: #697386;
+    --violet: #635bff; --blue: #0a66c2; --line: #e3e8ee;
+    --ok: #0e9f6e; --warn: #c27803; --bad: #c81e1e;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.5; }
+  header { background: linear-gradient(135deg, #635bff 0%, #0a66c2 100%); color: #fff; padding: 32px 24px; }
+  header h1 { margin: 0 0 4px; font-size: 24px; }
+  header .sub { opacity: .9; font-size: 14px; }
+  main { max-width: 1080px; margin: 0 auto; padding: 24px 16px 64px; }
+  h2 { font-size: 18px; margin: 32px 0 12px; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-top: -40px; }
+  .kpi { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; box-shadow: 0 4px 14px rgba(26,31,54,.06); }
+  .kpi .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+  .kpi .value { font-size: 26px; font-weight: 700; margin-top: 4px; }
+  .kpi .note { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; margin-top: 16px; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .filters button { border: 1px solid var(--line); background: #fff; color: var(--ink); border-radius: 999px; padding: 6px 14px; font-size: 13px; cursor: pointer; }
+  .filters button.active { background: var(--violet); border-color: var(--violet); color: #fff; }
+  .filters input { border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; font-size: 13px; min-width: 180px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .03em; }
+  td.price { font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .badge { display: inline-block; border-radius: 999px; padding: 2px 9px; font-size: 11.5px; font-weight: 600; }
+  .b-ok { background: #def7ec; color: var(--ok); }
+  .b-warn { background: #fdf6b2; color: var(--warn); }
+  .b-bad { background: #fde8e8; color: var(--bad); }
+  .b-info { background: #e1effe; color: var(--blue); }
+  .chart { margin-top: 8px; }
+  .bar-row { display: grid; grid-template-columns: 220px 1fr 90px; gap: 10px; align-items: center; margin: 7px 0; font-size: 13px; }
+  .bar-track { background: #eef1f6; border-radius: 6px; height: 22px; position: relative; }
+  .bar-fill { height: 22px; border-radius: 6px; background: linear-gradient(90deg, #635bff, #0a66c2); }
+  .bar-fill.obs { background: repeating-linear-gradient(45deg, #c7cdd8, #c7cdd8 6px, #dfe3ea 6px, #dfe3ea 12px); }
+  .bar-val { font-variant-numeric: tabular-nums; font-weight: 600; text-align: right; }
+  .legend { font-size: 12px; color: var(--muted); margin-top: 10px; }
+  .legend span.sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; margin: 0 4px 0 12px; }
+  ul.notes { padding-left: 18px; font-size: 13.5px; color: var(--ink); }
+  ul.notes li { margin: 6px 0; }
+  .muted { color: var(--muted); }
+  .foot { font-size: 12px; color: var(--muted); margin-top: 28px; }
+  @media (max-width: 720px) { .bar-row { grid-template-columns: 130px 1fr 80px; } table { font-size: 12.5px; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>BenQ GW2791 — Reporte de precios</h1>
+  <div class="sub">País: Estados Unidos (US) · Moneda: USD · Fecha de corte: 2026-09-23 22:37 UTC · Solicitud: 3eac4e9b-79ff-45e6-a65f-32623301bef7 (prueba-flujo-e2e)</div>
+  <div class="sub">Producto: monitor BenQ GW2791, 27" FHD 1080p IPS 100Hz Eye-Care (variante exacta GW2791; se excluyen GW2790/GW2491/kits)</div>
+</header>
+<main>
+  <section class="kpis">
+    <div class="kpi"><div class="label">Mínimo</div><div class="value">$119.99</div><div class="note">BenQ US / CDW (nuevo, disponible)</div></div>
+    <div class="kpi"><div class="label">Promedio</div><div class="value">$185.69</div><div class="note">4 ofertas nuevas disponibles</div></div>
+    <div class="kpi"><div class="label">Máximo</div><div class="value">$264.77</div><div class="note">eBay VELTRIX MARKET (importación)</div></div>
+    <div class="kpi"><div class="label">Ofertas</div><div class="value">4 + 7 obs.</div><div class="note">4 en estadísticas · 7 solo observación</div></div>
+  </section>
+
+  <div class="card">
+    <strong>Estadísticas (USD, sin conversión de divisas):</strong>
+    <ul class="notes">
+      <li><strong>Principal — ofertas nuevas, SKU exacto, precio verificado y disponibles (n=4):</strong> mínimo <strong>$119.99</strong> · promedio <strong>$185.69</strong> · máximo <strong>$264.77</strong>. El promedio NO incluye ofertas agotadas, abiertas/usadas ni indexadas.</li>
+      <li><strong>Sensibilidad — incluyendo Walmart agotado ($119.99) (n=5):</strong> mínimo $119.99 · promedio <strong>$172.55</strong> · máximo $264.77.</li>
+      <li>Reproducibilidad: (119.99 + 119.99 + 237.99 + 264.77) / 4 = 185.685 → $185.69. Sensibilidad: (742.74 + 119.99) / 5 = 172.546 → $172.55.</li>
+    </ul>
+  </div>
+
+  <h2>Ofertas incluidas en estadísticas (nuevo, disponibles)</h2>
+  <div class="card">
+    <div class="filters">
+      <button class="active" data-f="all" onclick="filterRows(this)">Todas</button>
+      <button data-f="stats" onclick="filterRows(this)">Solo estadísticas</button>
+      <button data-f="obs" onclick="filterRows(this)">Solo observaciones</button>
+      <input type="text" id="q" placeholder="Buscar marketplace / estado…" oninput="filterRows(null)">
+    </div>
+  </div>
+  <div class="card" style="overflow-x:auto">
+    <table id="offers">
+      <thead><tr><th>Marketplace</th><th>Vendedor</th><th>Precio</th><th>Envío</th><th>Disponibilidad</th><th>Fuente</th><th>Enlace</th></tr></thead>
+      <tbody>
+        <tr data-grp="stats">
+          <td>BenQ US <span class="badge b-info">fabricante</span></td><td>BenQ</td>
+          <td class="price">$119.99</td><td>Envío gratis &gt; $35</td>
+          <td><span class="badge b-ok">Disponible</span></td><td>directo</td>
+          <td><a href="https://www.benq.com/en-us/monitor/home/gw2791.html" target="_blank" rel="noopener">Ver oferta</a></td>
+        </tr>
+        <tr data-grp="stats">
+          <td>CDW</td><td>CDW</td>
+          <td class="price">$119.99</td><td>Same-day (antes 2 PM CT)</td>
+          <td><span class="badge b-ok">Disponible (23 u.)</span></td><td>directo</td>
+          <td><a href="https://www.cdw.com/product/benq-gw2791-led-monitor-full-hd-1080p-27/8170058" target="_blank" rel="noopener">Ver oferta</a></td>
+        </tr>
+        <tr data-grp="stats">
+          <td>Newegg</td><td>LingGo (3rd party)</td>
+          <td class="price">$237.99</td><td>$5.99 · entrega ~3 días</td>
+          <td><span class="badge b-ok">Disponible</span></td><td>directo</td>
+          <td><a href="https://www.newegg.com/p/3C6-00AB-001S9" target="_blank" rel="noopener">Ver oferta</a></td>
+        </tr>
+        <tr data-grp="stats">
+          <td>eBay</td><td>VELTRIX MARKET (99.7%)</td>
+          <td class="price">$264.77</td><td>$75.99 exp. desde Corea del Sur (import fees incl.)</td>
+          <td><span class="badge b-ok">Nuevo · 3 disp.</span></td><td>directo</td>
+          <td><a href="https://www.ebay.com/itm/800238914359" target="_blank" rel="noopener">Ver oferta</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Observaciones (fuera de estadísticas principales)</h2>
+  <div class="card" style="overflow-x:auto">
+    <table id="obs">
+      <thead><tr><th>Fuente</th><th>Precio</th><th>Estado</th><th>Motivo de exclusión / nota</th><th>Enlace</th></tr></thead>
+      <tbody>
+        <tr data-grp="obs">
+          <td>Walmart</td><td class="price">$119.99</td><td><span class="badge b-warn">Agotado</span></td>
+          <td>Precio visible ("Current price is USD$119.99") pero <em>out of stock</em>; entra sólo en la sensibilidad.</td>
+          <td><a href="https://www.walmart.com/ip/BenQ-GW2791-27in-Fhd-Ips-Monitor-100hz/14692061472" target="_blank" rel="noopener">Ver ficha</a></td>
+        </tr>
+        <tr data-grp="obs">
+          <td>eBay (open box)</td><td class="price">$129.99</td><td><span class="badge b-warn">Open box</span></td>
+          <td>Caja abierta ("new open box, box has wear from storage") — excluida por condición.</td>
+          <td><a href="https://www.ebay.com/itm/227176922670" target="_blank" rel="noopener">Ver ficha</a></td>
+        </tr>
+        <tr data-grp="obs">
+          <td>eBay (usado)</td><td class="price">$124.99</td><td><span class="badge b-warn">Indexado</span></td>
+          <td>Listado usado (298421884508) visto en carrusel "Similar Items" de otra ficha; precio indexado, condición usada.</td>
+          <td><a href="https://www.ebay.com/itm/298421884508" target="_blank" rel="noopener">Ver ficha</a></td>
+        </tr>
+        <tr data-grp="obs">
+          <td>B&amp;H Photo</td><td class="price">$119.99</td><td><span class="badge b-bad">Descontinuado</span></td>
+          <td>Ficha 1861551-REG marcada <em>Discontinued</em>; precio sólo en snippet/versión usada → indexado.</td>
+          <td><a href="https://www.bhphotovideo.com/c/product/1861551-REG/benq_gw2791_27_1080p_eye_care.html" target="_blank" rel="noopener">Ver ficha</a></td>
+        </tr>
+        <tr data-grp="obs">
+          <td>Best Buy</td><td class="price">$109.29–$155.68</td><td><span class="badge b-bad">No disp. nuevo</span></td>
+          <td>SKUs 11123190 y 12250679: "no longer available in new condition"; rango sólo de ofertas de terceros (marketplace) en resultado de búsqueda → indexado.</td>
+          <td><a href="https://www.bestbuy.com/product/benq-gw2791-27-169-full-hd-100hz-ips-led-monitor-black/J39QZT5G96/sku/11123190" target="_blank" rel="noopener">Ver ficha</a></td>
+        </tr>
+        <tr data-grp="obs">
+          <td>Amazon.com</td><td class="price">—</td><td><span class="badge b-bad">Bloqueado</span></td>
+          <td>Bot-wall/captcha (validateCaptcha) en web_extract, curl y navegador; sin precio vigente verificable. No se estima precio.</td>
+          <td><a href="https://www.amazon.com/dp/B0DJHG9MXM" target="_blank" rel="noopener">Ver ficha</a></td>
+        </tr>
+        <tr data-grp="obs">
+          <td>Klarna (agregador)</td><td class="price">$145.27</td><td><span class="badge b-warn">Indexado</span></td>
+          <td>Comparador: "lowest price among 3 stores" el día de consulta; sin página de oferta directa verificada.</td>
+          <td><a href="https://www.klarna.com/us/shopping/pl/cl25/3380094016/Monitors/Benq-GW2791/" target="_blank" rel="noopener">Ver comparador</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Gráfica de precios (USD)</h2>
+  <div class="card">
+    <div class="chart" id="chart"></div>
+    <div class="legend">Barras sólidas = ofertas nuevas disponibles (entran a estadísticas). Barras rayadas = observaciones (fuera de estadísticas). Pasa el cursor o enfoca una barra para ver el valor exacto.</div>
+  </div>
+
+  <h2>Notas metodológicas y limitaciones</h2>
+  <div class="card">
+    <ul class="notes">
+      <li><strong>Fuentes consultadas (US):</strong> amazon.com, walmart.com, bestbuy.com, bhphotovideo.com, ebay.com, newegg.com + benq.com (fabricante), cdw.com y klarna.com (agregador). Cobertura: fuentes principales del mercado US declarado, no "todos los marketplaces del internet".</li>
+      <li><strong>Fuentes bloqueadas o sin precio vigente:</strong> Amazon.com (captcha/robot-wall). Best Buy y B&amp;H: producto descontinuado/no disponible en condición nueva. Walmart: agotado.</li>
+      <li><strong>Envío e impuestos:</strong> los precios son precio publicado del producto sin impuestos salvo donde se indica; el envío se lista por separado. El precio de Amazon/retailers puede variar por código postal, sesión o membresía. En la oferta eBay de importación los import fees están incluidos y el envío expedito ($75.99) se suma al final.</li>
+      <li><strong>Exclusiones:</strong> variantes GW2491/GW2790/GW2790C/kits 2-Pack, usados, open box y reacondicionados quedan fuera de las estadísticas principales. Sin sustitutos en las estadísticas.</li>
+      <li><strong>Divisas:</strong> todas las ofertas en USD; no se mezclan divisas ni se convierte moneda.</li>
+      <li><strong>Trazabilidad:</strong> cada fila incluye URL específica de la oferta, estado y fecha de consulta (2026-09-23 22:37 UTC). Las filas marcadas "indexado" provienen de resultados de búsqueda o agregadores y no se promueven a oferta directa verificada.</li>
+    </ul>
+  </div>
+
+  <div class="foot">Generado por Hermes Agent para BizBrain · metodología online-sku-price-reports v0.1.0 · datos observados el 2026-09-23 22:37 UTC · reporte autocontenido (sin assets externos).</div>
+</main>
+<script>
+const DATA = [
+  {label: "BenQ US", price: 119.99, grp: "stats", note: "Nuevo · disponible · envío gratis > $35"},
+  {label: "CDW", price: 119.99, grp: "stats", note: "Nuevo · 23 unidades · same-day"},
+  {label: "Newegg (LingGo)", price: 237.99, grp: "stats", note: "Nuevo · +$5.99 envío"},
+  {label: "eBay VELTRIX", price: 264.77, grp: "stats", note: "Nuevo · importación desde Corea del Sur · +$75.99 envío"},
+  {label: "Walmart (agotado)", price: 119.99, grp: "obs", note: "Fuera de estadísticas · out of stock"},
+  {label: "eBay open box", price: 129.99, grp: "obs", note: "Fuera de estadísticas · condición open box"},
+  {label: "eBay usado (indexado)", price: 124.99, grp: "obs", note: "Fuera de estadísticas · usado · indexado"},
+  {label: "B&H (indexado)", price: 119.99, grp: "obs", note: "Fuera de estadísticas · descontinuado · indexado"},
+  {label: "Best Buy (indexado, mín.)", price: 109.29, grp: "obs", note: "Fuera de estadísticas · rango $109.29–$155.68 de terceros"},
+  {label: "Klarna (agregador)", price: 145.27, grp: "obs", note: "Fuera de estadísticas · precio indexado de comparador"}
+];
+const max = Math.max(...DATA.map(d => d.price));
+const chart = document.getElementById("chart");
+DATA.forEach(d => {
+  const row = document.createElement("div");
+  row.className = "bar-row";
+  const pct = (d.price / max * 100).toFixed(1);
+  row.innerHTML =
+    '<div>' + d.label + '</div>' +
+    '<div class="bar-track"><div class="bar-fill ' + (d.grp === "obs" ? "obs" : "") + '" style="width:' + pct + '%" tabindex="0" title="' + d.label + ' — $' + d.price.toFixed(2) + ' USD — ' + d.note + '" aria-label="' + d.label + ' ' + d.price.toFixed(2) + ' dólares"></div></div>' +
+    '<div class="bar-val">$' + d.price.toFixed(2) + '</div>';
+  chart.appendChild(row);
+});
+function filterRows(btn) {
+  const cards = document.querySelectorAll(".filters button");
+  let f = "all";
+  if (btn) { cards.forEach(b => b.classList.remove("active")); btn.classList.add("active"); f = btn.dataset.f; }
+  else { const a = document.querySelector(".filters button.active"); f = a ? a.dataset.f : "all"; }
+  const q = (document.getElementById("q").value || "").toLowerCase();
+  document.querySelectorAll("#offers tbody tr, #obs tbody tr").forEach(tr => {
+    const okGrp = f === "all" || tr.dataset.grp === f;
+    const okQ = !q || tr.textContent.toLowerCase().includes(q);
+    tr.style.display = (okGrp && okQ) ? "" : "none";
+  });
+}
+</script>
+</body>
+</html>
