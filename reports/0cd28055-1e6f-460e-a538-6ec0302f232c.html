@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Reporte de precios — TEST-SKU-001</title><style>
+:root{--bg:#f6f8fb;--card:#fff;--ink:#0f172a;--muted:#64748b;--accent:#4f46e5;--ok:#059669;--warn:#d97706;--bad:#dc2626;--line:#e2e8f0}
+*{box-sizing:border-box}body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink)}
+.wrap{max-width:1100px;margin:0 auto;padding:24px}
+h1{font-size:1.5rem;margin:.2em 0}h2{font-size:1.1rem;margin:1.4em 0 .5em}
+.meta{color:var(--muted);font-size:.85rem;margin-bottom:18px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.card .k{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.card .v{font-size:1.3rem;font-weight:700;margin-top:4px}
+.tabs{display:flex;gap:8px;margin:14px 0;flex-wrap:wrap}
+.tabs button{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:7px 14px;cursor:pointer;font-size:.85rem}
+.tabs button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:.85rem}
+th{background:#f1f5f9;text-align:left;padding:8px 10px;font-size:.72rem;text-transform:uppercase;color:var(--muted)}
+td{padding:8px 10px;border-top:1px solid var(--line);vertical-align:top}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.badge{display:inline-block;padding:2px 8px;border-radius:99px;font-size:.7rem;font-weight:600}
+.b-avail{background:#d1fae5;color:var(--ok)}.b-indexed{background:#fef3c7;color:var(--warn)}
+.b-oos{background:#fee2e2;color:var(--bad)}.b-unk{background:#e2e8f0;color:var(--muted)}
+.bar{height:14px;border-radius:4px;background:linear-gradient(90deg,#4f46e5,#7c3aed);min-width:2px}
+.chart-row{display:grid;grid-template-columns:150px 1fr 110px;gap:10px;align-items:center;margin:6px 0;font-size:.8rem}
+.note{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:10px 14px;font-size:.82rem;margin:14px 0}
+.src{font-size:.8rem;color:var(--muted)}
+input[type=search]{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:8px;font-size:.9rem;margin-bottom:12px}
+</style></head>
+<body><div class="wrap"><h1>Reporte de precios — TEST-SKU-001</h1><div class="meta">SKU de prueba · Mercado: US · Corrida 79e04669 · Corte de datos 2026-09-22 18:50 UTC</div>
+
+    <div class="cards">
+      <div class="card"><div class="k">Ofertas registradas</div><div class="v">1</div></div>
+      <div class="card"><div class="k">Con precio visible</div><div class="v">0</div></div>
+      <div class="card"><div class="k">Precio mínimo</div><div class="v">—</div></div>
+      <div class="card"><div class="k">Precio promedio</div><div class="v">—</div></div>
+      <div class="card"><div class="k">Precio máximo</div><div class="v">—</div></div>
+      <div class="card"><div class="k">Moneda(s)</div><div class="v">USD</div></div>
+    </div>
+<div class="note"><b>Notas:</b> Precios publicados en moneda local, sin conversión. Las filas marcadas <i>Indexado</i>
+provienen de fragmentos de búsqueda o agregadores y no fue posible verificar la página directa (puede incluir usados/reacondicionados).
+Estadísticas calculadas sólo sobre filas con precio visible; mismo país y moneda. La disponibilidad puede variar por ubicación/sesión.</div>
+<div class="tabs"><button class="on" onclick="showTab(this,'tab-US')">US</button></div>
+<div class="tabpane" id="tab-US" style="display:block"><h2>Gráfica de precio mínimo (por SKU)</h2><p>Sin ofertas con precio.</p><h2>Ofertas</h2><table class="data"><thead><tr><th>SKU</th><th>País</th><th>Marketplace</th><th>Vendedor</th><th>Precio</th><th>Estado</th><th>Fuente</th><th>Enlace</th></tr></thead><tbody><tr><td><b>TEST-SKU-001</b></td><td>US</td><td>—</td><td>—</td><td>—</td><td><span class="badge b-unk">Sin ofertas</span></td><td><span class="src">search_result</span></td><td>—</td></tr></tbody></table></div>
+<h2>Fuentes bloqueadas o con limitaciones</h2><p>Ninguna fuente bloqueada.</p>
+<h2>Fuentes consultadas</h2><ul><li>{&quot;query&quot;: &quot;\&quot;TEST-SKU-001\&quot; (exact match, web search)&quot;, &quot;result&quot;: &quot;No US marketplace listings; results were developer docs, API testing guides, and fixtures referencing the SKU as test data&quot;}</li><li>{&quot;query&quot;: &quot;\&quot;TEST-SKU-001\&quot; site:amazon.com OR site:walmart.com OR site:ebay.com OR site:newegg.com OR site:bestbuy.com&quot;, &quot;result&quot;: &quot;No product pages from any US marketplace; only developer/test documentation pages&quot;}</li><li>{&quot;query&quot;: &quot;\&quot;TEST-SKU-001\&quot; buy price USD&quot;, &quot;result&quot;: &quot;No priced US offers&quot;}</li><li>{&quot;url&quot;: &quot;https://shop.iecsupply.com/products/test-sku-001-iec-supply-frontend&quot;, &quot;marketplace&quot;: &quot;iecsupply.com (US electrical distributor)&quot;, &quot;verified_via&quot;: &quot;web_extract (direct page)&quot;, &quot;outcome&quot;: &quot;Real product page exists titled &#x27;test-sku-001-iec-supply-frontend&#x27; (Banner Engineering) but price is &#x27;REQUEST FOR QUOTATION&#x27;, marked obsolete, contact for availability — not a priced offer and SKU string is a store test fixture, not the literal SKU TEST-SKU-001&quot;}</li><li>{&quot;url&quot;: &quot;https://www.walmart.ca/fr/ip/Test-SKU-001/3GZFTNXGCF83&quot;, &quot;outcome&quot;: &quot;Walmart.ca (Canada, CAD 35.00) — out of scope for US market; also appears to be a test listing&quot;}</li><li>{&quot;url&quot;: &quot;https://www.elysiumgadget.com/product/pos-test-sku-001/&quot;, &quot;outcome&quot;: &quot;Thailand retailer, THB 1,070, SKU POS-TEST-SKU-001 — out of scope for US market and SKU differs&quot;}</li></ul>
+<p class="src">Generado automáticamente por BizBrain PriceMonitor · reporte autocontenido, sin dependencias externas.</p>
+</div><script>
+function showTab(btn, id){
+  document.querySelectorAll('.tabpane').forEach(p=>p.style.display='none');
+  document.getElementById(id).style.display='block';
+  document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+}
+function filterTable(v){
+  v=v.toLowerCase();
+  document.querySelectorAll('table.data tbody tr').forEach(r=>{
+    r.style.display = r.textContent.toLowerCase().includes(v)?'':'none';
+  });
+}
+</script></body></html>
