@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BizBrain · Reportes de precios SKU</title>
+<style>
+  :root {
+    --bg: #f6f8fb; --card: #ffffff; --ink: #1a2233; --muted: #5b6779;
+    --accent: #4f46e5; --accent2: #7c3aed; --ok: #059669; --warn: #d97706; --err: #dc2626;
+    --border: #e3e8ef;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  header {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: #fff; padding: 36px 24px 30px;
+  }
+  header .wrap, main .wrap { max-width: 980px; margin: 0 auto; }
+  header h1 { margin: 0 0 6px; font-size: 26px; }
+  header p { margin: 0; opacity: .92; }
+  main { padding: 28px 24px 60px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 24px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(16,24,40,.06);
+  }
+  .card h2 { margin: 0 0 4px; font-size: 18px; }
+  .card .sub { color: var(--muted); font-size: 13.5px; margin: 0 0 18px; }
+  label { display: block; font-weight: 600; font-size: 13.5px; margin: 14px 0 6px; }
+  input[type=text], input[type=email], textarea {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 9px;
+    font-size: 14px; font-family: inherit; background: #fff; color: var(--ink);
+  }
+  input:focus, textarea:focus { outline: 2px solid #c7d2fe; border-color: var(--accent); }
+  textarea { min-height: 140px; resize: vertical; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .checks { display: flex; flex-wrap: wrap; gap: 10px 18px; }
+  .checks label { display: flex; align-items: center; gap: 6px; font-weight: 500; margin: 0; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .row2 { grid-template-columns: 1fr; } }
+  button {
+    margin-top: 18px; background: linear-gradient(135deg, #4f46e5, #7c3aed); color: #fff;
+    border: 0; border-radius: 10px; padding: 12px 22px; font-size: 15px; font-weight: 600; cursor: pointer;
+  }
+  button:hover { filter: brightness(1.06); }
+  button:disabled { opacity: .55; cursor: not-allowed; }
+  .msg { margin-top: 12px; font-size: 14px; }
+  .msg.ok { color: var(--ok); } .msg.err { color: var(--err); }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th { text-align: left; color: var(--muted); font-weight: 600; padding: 8px 10px; border-bottom: 2px solid var(--border); }
+  td { padding: 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:last-child td { border-bottom: 0; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+  .b-pending  { background: #eef2ff; color: #4338ca; }
+  .b-running  { background: #fef3c7; color: #b45309; }
+  .b-completed{ background: #d1fae5; color: #047857; }
+  .b-partial  { background: #ffedd5; color: #c2410c; }
+  .b-failed   { background: #fee2e2; color: #b91c1c; }
+  .b-other    { background: #f1f5f9; color: #475569; }
+  a.rpt { color: var(--accent); font-weight: 600; text-decoration: none; }
+  a.rpt:hover { text-decoration: underline; }
+  .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; }
+  .note-cell { max-width: 260px; color: var(--muted); font-size: 12.5px; }
+  footer { color: var(--muted); font-size: 12.5px; text-align: center; padding: 0 24px 30px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>BizBrain · Reportes de precios SKU</h1>
+    <p>Captura tus SKUs y mercados; el agente busca precios en marketplaces y entrega un reporte HTML interactivo con estadísticas por moneda.</p>
+  </div>
+</header>
+<main class="wrap">
+  <section class="card">
+    <h2>Nueva solicitud de reporte</h2>
+    <p class="sub">Un SKU por línea, ortografía exacta del fabricante. Cada reporte consume varios minutos de búsqueda y verificación; usa la cola con responsabilidad.</p>
+    <form id="frm">
+      <div class="row2">
+        <div>
+          <label for="client_name">Nombre (opcional)</label>
+          <input type="text" id="client_name" maxlength="120" placeholder="Tu nombre o cliente">
+        </div>
+        <div>
+          <label for="contact_email">Email (opcional)</label>
+          <input type="email" id="contact_email" maxlength="200" placeholder="para avisarte cuando esté listo">
+        </div>
+      </div>
+      <label for="sku_input">SKUs (uno por línea)</label>
+      <textarea id="sku_input" required placeholder="GW2791&#10;EX3415R&#10;MA320UP"></textarea>
+      <label>Países / mercados</label>
+      <div class="checks" id="countries">
+        <label><input type="checkbox" value="US" checked> US</label>
+        <label><input type="checkbox" value="MX" checked> MX</label>
+        <label><input type="checkbox" value="CA"> CA</label>
+        <label><input type="checkbox" value="DE"> DE</label>
+        <label><input type="checkbox" value="JP"> JP</label>
+        <label><input type="checkbox" value="ES"> ES</label>
+      </div>
+      <button type="submit" id="btn">Solicitar reporte</button>
+      <div class="msg" id="msg"></div>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>Estado de solicitudes</h2>
+    <p class="sub">Se actualiza cada 30 segundos. Al terminar, el enlace abre el reporte directamente en el navegador.</p>
+    <div style="overflow-x:auto">
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Creada</th><th>Cliente</th><th>SKUs</th><th>Países</th><th>Estado</th><th>Reporte</th><th>Notas</th></tr>
+        </thead>
+        <tbody id="rows">
+          <tr><td colspan="8" style="color:#5b6779">Cargando…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+<footer>Proyecto PriceMonitor · BizBrain — los precios son observaciones de fuentes públicas y pueden variar por ubicación, membresía o disponibilidad.</footer>
+
+<script>
+(function () {
+  "use strict";
+  var SUPA = "https://olznsppinhzjbfrgkehu.supabase.co/rest/v1/report_requests";
+  var KEY = "sb_publishable_Vqf8y7tYQ9R4YZ7GW1enzw_JhSxdOvv";
+  var PAGES_BASE = "__PAGES_BASE__"; /* repo de GitHub Pages que aloja reports/<file>.html */
+
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+  }
+
+  function reportUrl(path) {
+    if (!path) return null;
+    if (/^https?:\/\//.test(path)) return path;
+    var file = path.split("/").pop();
+    return PAGES_BASE + "reports/" + file;
+  }
+
+  function badge(status) {
+    var known = ["pending", "running", "completed", "partial", "failed"];
+    var cls = known.indexOf(status) >= 0 ? "b-" + status : "b-other";
+    return '<span class="badge ' + cls + '">' + esc(status) + "</span>";
+  }
+
+  function fmtDate(iso) {
+    if (!iso) return "-";
+    try {
+      var d = new Date(iso);
+      return d.toLocaleDateString("es-MX", { day: "2-digit", month: "short" }) +
+        " " + d.toLocaleTimeString("es-MX", { hour: "2-digit", minute: "2-digit" });
+    } catch (e) { return esc(iso); }
+  }
+
+  function load() {
+    var url = SUPA + "?select=id,created_at,client_name,sku_input,countries,status,report_path,notes&order=created_at.desc&limit=25";
+    fetch(url, { headers: { apikey: KEY, Authorization: "Bearer " + KEY } })
+      .then(function (r) { return r.json(); })
+      .then(function (rows) {
+        var tb = document.getElementById("rows");
+        if (!Array.isArray(rows) || !rows.length) {
+          tb.innerHTML = '<tr><td colspan="8" style="color:#5b6779">Sin solicitudes todavía.</td></tr>';
+          return;
+        }
+        tb.innerHTML = rows.map(function (r) {
+          var skus = (r.sku_input || "").split("\n").filter(function (l) { return l.trim(); });
+          var ru = reportUrl(r.report_path);
+          var link = (r.status === "completed" || r.status === "partial") && ru
+            ? '<a class="rpt" href="' + esc(ru) + '" target="_blank" rel="noopener">abrir</a>'
+            : "—";
+          return "<tr>" +
+            '<td class="mono">' + esc((r.id || "").slice(0, 8)) + "</td>" +
+            "<td>" + fmtDate(r.created_at) + "</td>" +
+            "<td>" + esc(r.client_name || "—") + "</td>" +
+            "<td>" + skus.length + "</td>" +
+            "<td>" + esc((r.countries || []).join(", ")) + "</td>" +
+            "<td>" + badge(r.status) + "</td>" +
+            "<td>" + link + "</td>" +
+            '<td class="note-cell" title="' + esc(r.notes || "") + '">' + esc((r.notes || "").slice(0, 90)) + "</td>" +
+            "</tr>";
+        }).join("");
+      })
+      .catch(function () {
+        document.getElementById("rows").innerHTML =
+          '<tr><td colspan="8" style="color:#b91c1c">No se pudo consultar la cola. Reintentando…</td></tr>';
+      });
+  }
+
+  document.getElementById("frm").addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var msg = document.getElementById("msg");
+    var btn = document.getElementById("btn");
+    var skus = document.getElementById("sku_input").value.split("\n")
+      .map(function (l) { return l.trim(); }).filter(Boolean);
+    var countries = Array.prototype.slice.call(
+      document.querySelectorAll("#countries input:checked")).map(function (c) { return c.value; });
+    if (!skus.length) { msg.className = "msg err"; msg.textContent = "Agrega al menos un SKU."; return; }
+    if (!countries.length) { msg.className = "msg err"; msg.textContent = "Selecciona al menos un país."; return; }
+    btn.disabled = true; msg.className = "msg"; msg.textContent = "Enviando solicitud…";
+    fetch(SUPA, {
+      method: "POST",
+      headers: {
+        apikey: KEY, Authorization: "Bearer " + KEY,
+        "Content-Type": "application/json", Prefer: "return=representation"
+      },
+      body: JSON.stringify({
+        client_name: document.getElementById("client_name").value || null,
+        contact_email: document.getElementById("contact_email").value || null,
+        sku_input: skus.join("\n"),
+        countries: countries,
+        status: "pending"
+      })
+    }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (res) {
+        btn.disabled = false;
+        if (res.ok && Array.isArray(res.j) && res.j.length) {
+          msg.className = "msg ok";
+          msg.textContent = "Solicitud registrada (" + res.j[0].id.slice(0, 8) + "). El reporte aparecerá en la tabla cuando termine el procesamiento.";
+          document.getElementById("frm").reset();
+          load();
+        } else {
+          msg.className = "msg err";
+          msg.textContent = "No se pudo registrar la solicitud: " + esc((res.j && res.j.message) || "error desconocido");
+        }
+      }).catch(function (e) {
+        btn.disabled = false;
+        msg.className = "msg err";
+        msg.textContent = "Error de red: " + esc(e);
+      });
+  });
+
+  load();
+  setInterval(load, 30000);
+})();
+</script>
+</body>
+</html>
